@@ -1,6 +1,8 @@
 import React, {Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { MdSave } from 'react-icons/md'
+const path = window.location.pathname
+
 
 class UpdateScore extends Component {
     constructor(props)
@@ -35,7 +37,7 @@ class UpdateScore extends Component {
         .then(() => alert("Update completed"), 
         this.setState({ redirect: true },
         this.render = ()=>(
-        <Redirect to="/"/>)))
+        <Redirect to={`${path}`}/>)))
         .catch(err => console.error(err));
        };
 
