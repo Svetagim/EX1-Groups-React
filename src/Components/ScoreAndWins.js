@@ -13,6 +13,21 @@ class ScoreAndWins extends Component {
         this.add = this.add.bind(this)
     }
 
+    add({ event = null, id = null, group = 'default group', points = 'default points', wins = 'default', losses = 'default', coach = 'default', players = 'default'}) {
+        this.setState(prevState => ({
+          groups: [
+            ...prevState.groups, {
+              id: id !== null ? id : this.nextID(prevState.groups),
+              group: group,
+              points: points,
+              wins: wins,
+              losses: losses,
+              coach: coach,
+              players: players
+            }]
+        }))
+    }
+
     handleSubmit(event){ 
         console.log(this.state)
         event.preventDefault();
@@ -36,14 +51,14 @@ class ScoreAndWins extends Component {
          body: formBody
          })
          .then(res => res.json())
-         .then(data => data.map(item => {
+         .then(data => data.map(item => 
              this.add({group: item.Name, 
                      points: item.Points, 
                      wins: item.W, 
                      losses: item.L,
                      coach: item.Coach ,
                      players: item.Players
-                 })}))
+                 })))
          .catch(err => console.error(err));
        };
 
