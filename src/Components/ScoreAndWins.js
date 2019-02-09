@@ -33,7 +33,6 @@ class ScoreAndWins extends Component {
 
         console.log(formBody)
         const url = 'https://ex1-groups.herokuapp.com/scoresandwins';
-        
         fetch(url, {
          method: 'POST',
          headers: {

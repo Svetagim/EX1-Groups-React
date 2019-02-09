@@ -9,7 +9,7 @@ const ReactRouter = () => {
     return(
         <React.Fragment>
             <Header/>
-            <Route exact path="/" component={GroupList}/>
+            <Route exact path="http://shenkar.html5-book.co.il/2018-2019/dcs/dev_173/" component={GroupList}/>
             <Route path="/ScoreAndWins" component={ScoreAndWins}/>
             <Route path="/UpdateScore" component={UpdateScore}/>
             
