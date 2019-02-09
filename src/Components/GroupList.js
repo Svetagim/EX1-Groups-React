@@ -1,16 +1,11 @@
 import React, {Component } from 'react'
 import Group from './Group'
-//import { MdGrade } from 'react-icons/md';
 
 class GroupList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            groups: [
-                //{id: 0, group: 'UNET Holon', points:20},
-                //{id: 1, group: 'M. Tel-Aviv', points:18},
-                //{id: 2, group: 'Hapoel Eilat', points:17}
-            ]
+            groups: []
         }
         this.eachGroup = this.eachGroup.bind(this)
         this.add = this.add.bind(this)
@@ -21,22 +16,28 @@ class GroupList extends Component {
             <div key={`container${i}`} className="card" style={{width: 18 + 'rem', marginBottom: 7 + 'px'}}>
                 <div className="card-body">
                     <Group key={`group${i}`} index={i}>
-                        <h5>{group.group}</h5>
-                        <p>{group.points}</p>
+                        <h3>{group.group}</h3>
+                        <h5>Points: {group.points}</h5>
+                        <h6>Number of Wins: {group.wins}</h6>
+                        <h6>Number of Losses: {group.losses}</h6>
+                        <h6>Coach: {group.coach}</h6>
                     </Group>
                 </div>
             </div>
         )
     }
 
-    add({ event = null, id = null, group = 'default group', points = 'default points' }) {
-        console.log(event, id, group, points)
+    add({ event = null, id = null, group = 'default group', points = 'default points', wins = 'default', losses = 'default', coach = 'default', players = 'default'}) {
         this.setState(prevState => ({
           groups: [
             ...prevState.groups, {
               id: id !== null ? id : this.nextID(prevState.groups),
               group: group,
-              point: points
+              points: points,
+              wins: wins,
+              losses: losses,
+              coach: coach,
+              players: players
             }]
         }))
     }
@@ -51,7 +52,13 @@ class GroupList extends Component {
         fetch(url)
             .then(res => res.json())
             .then(data => data.map(item =>
-                this.add({group: item.Name, points: item.points})))
+                this.add({group: item.Name, 
+                        points: item.Points, 
+                        wins: item.W, 
+                        losses: item.L,
+                        coach: item.Coach ,
+                        players: item.Players
+                    })))
             .catch(err => console.error(err));
     }
     render() {

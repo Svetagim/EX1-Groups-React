@@ -1,4 +1,15 @@
+
 #root {
     margin-left: 5%;
     margin-top: 1%;
+}
+
+.card {
+    float: left;
+    margin-top: 20px;
+    margin-right: 2%;
+}
+
+button{
+    margin-top: 10px;
 }

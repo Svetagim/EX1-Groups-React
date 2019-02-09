@@ -1,6 +1,5 @@
 import React, {Component } from 'react'
 import { MdSave } from 'react-icons/md'
-import { MdEdit } from 'react-icons/md'
 
 class Group extends Component {
     constructor(props)
@@ -41,9 +40,6 @@ class Group extends Component {
         return (
             <div className= 'group'>
                 <div> {this.props.children} </div>
-                <span>
-                    <button onClick={this.edit} className="btn btn-primary" style={{marginRight: 7+'px'}}><MdEdit/></button>
-                </span>
             </div>
         )
     }
