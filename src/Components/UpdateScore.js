@@ -23,6 +23,7 @@ class UpdateScore extends Component {
         formBody = formBody.join("&");
         
         const url = 'https://ex1-groups.herokuapp.com/setscore/';
+        
         fetch(url, {
          method: 'POST',
          headers: {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},

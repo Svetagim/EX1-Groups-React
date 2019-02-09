@@ -10,8 +10,9 @@ const ReactRouter = () => {
         <React.Fragment>
             <Header/>
             <Route exact path="/" component={GroupList}/>
-            <Route path="/UpdateScore" component={UpdateScore}/>
             <Route path="/ScoreAndWins" component={ScoreAndWins}/>
+            <Route path="/UpdateScore" component={UpdateScore}/>
+            
             
         </React.Fragment>
     )
