@@ -1,4 +1,5 @@
 import React, {Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { MdSave } from 'react-icons/md'
 
 class UpdateScore extends Component {
@@ -8,6 +9,7 @@ class UpdateScore extends Component {
         this.state = { 
                 Name:"", 
                 Points:"",
+                redirect: false
                 }
         this.handleSubmit = this.handleSubmit.bind(this);  
     }
@@ -30,7 +32,10 @@ class UpdateScore extends Component {
         body: formBody
         })
         .then(res => res.json())
-        .then(() => alert("Update completed"))
+        .then(() => alert("Update completed"), 
+        this.setState({ redirect: true },
+        this.render = ()=>(
+        <Redirect to="/"/>)))
         .catch(err => console.error(err));
        };
 
